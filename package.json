@@ -1,5 +1,6 @@
 {
   "name": "bookify",
+  "homepage": "https://rafaykhan177.github.io/bookify",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
