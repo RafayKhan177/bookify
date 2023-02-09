@@ -15,7 +15,7 @@ const Home = () => {
       <h1 className="my-3">Books</h1>
       <CardGroup className="cards-main-div">
         {books.map((book) => (
-          <BookCard key={book.id} id={book.id} {...book.data()} />
+          <BookCard link={`/book/view/${book.id}`} key={book.id} id={book.id} {...book.data()} />
         ))}
       </CardGroup>
     </div>

@@ -1,6 +1,54 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFirebase } from "../context/firebase";
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { CardActionArea } from "@mui/material";
+
+export default function BookCard(props) {
+  const navigate = useNavigate();
+  const firebase = useFirebase();
+
+  const [url, setUrl] = useState(null);
+  useEffect(() => {
+    firebase.getImageURL(props.imageURL).then((url) => setUrl(url));
+  }, []);
+
+  return (
+    <Card
+      sx={{
+        maxWidth: 300,
+        margin: ".4rem",
+        backgroundColor: "rgb(49, 49, 49)",
+        color: "aliceblue",
+      }}
+      onClick={(e) => navigate(props.link)}
+      className="my-3"
+    >
+      <CardActionArea>
+        <CardMedia sx={{width:"18rem",objectFit:"cover" }} component="img" height="180" image={url} alt="Card IMG" />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {props.name}
+          </Typography>
+          <Typography variant="body2" sx={{ color: "rgb(173, 173, 173)" }}>
+            Title: {props.name}, Rs:  {props.price}<br /> 
+            Book Sold & Writed By: {props.displayName},
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+}
+
+
+
+
+
+
 
 // import Button from "react-bootstrap/Button";
 // import Card from "react-bootstrap/Card";
@@ -33,46 +81,3 @@ import { useFirebase } from "../context/firebase";
 // }
 
 // export default BookCard;
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
-
-export default function BookCard(props) {
-  const navigate = useNavigate();
-  const firebase = useFirebase();
-
-  const [url, setUrl] = useState(null);
-  useEffect(() => {
-    firebase.getImageURL(props.imageURL).then((url) => setUrl(url));
-  }, []);
-
-  return (
-    <Card
-      sx={{
-        maxWidth: 300,
-        margin: ".4rem",
-        backgroundColor: "rgb(49, 49, 49)",
-        color: "aliceblue",
-      }}
-      onClick={(e) => navigate(`/book/view/${props.id}`)}
-      className="my-3"
-    >
-      <CardActionArea>
-        <CardMedia component="img" height="180" image={url} alt="Card IMG" />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {props.name}
-          </Typography>
-          <Typography variant="body2" sx={{ color: "rgb(173, 173, 173)" }}>
-            Title: {props.name} <br /> 
-            Book Sold & Writed By: {props.displayName} <br />
-            book Costs: {props.price} Rs.
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
-}

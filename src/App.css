@@ -80,7 +80,7 @@ body{
 /* ----------------------------------Loading Animation */
 .loading-main-div{
     height: 80vh;
-    width: 100vw;
+    width: 97vw;
     display: flex;
     justify-content: center;
     align-items: center;

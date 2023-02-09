@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { useFirebase } from "./context/firebase";
+import { useFirebase } from "../context/firebase";
 
 const ListingPage = () => {
   const [name, setName] = useState("");
@@ -10,9 +10,15 @@ const ListingPage = () => {
 
   const firebase = useFirebase();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    firebase.handleCreateNewListings(name, isbn, price, coverPic);
+    await firebase.handleCreateNewListings(name, isbn, price, coverPic);
+    // console.log(firebase)
+    setName("");
+    setIsbn("");
+    setPrice("");
+    setCoverPic("");
+    alert("Book Added");
   };
 
   return (
@@ -63,8 +69,14 @@ const ListingPage = () => {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
-        <button className="button-large" type="submit">
-          Creaete
+        <button
+          className="button-large"
+          type="submit"
+          // onClick={() => {
+          //   setName(""), setIsbn(""), setPrice(""), setCoverPic("");
+          // }}
+        >
+          Create
         </button>
       </Form>
     </div>

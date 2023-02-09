@@ -10,9 +10,47 @@ export default function Header() {
         <Navbar.Brand>bookify</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
-            <NavLink to="/" style={{textDecoration:"none" ,color:"rgb(182, 182, 182)",margin:"0 .5rem"}} >Home</NavLink>
-            <NavLink to="/book/list" style={{textDecoration:"none" ,color:"rgb(182, 182, 182)",margin:"0 .5rem"}} >Add Book</NavLink>
+          <Nav className="mt-3">
+            <NavLink
+              to="/home"
+              style={{
+                textDecoration: "none",
+                color: "rgb(182, 182, 182)",
+                margin: "0 .5rem",
+              }}
+            >
+               <p>HOME</p>
+            </NavLink>
+            <NavLink
+              to="/book/list"
+              style={{
+                textDecoration: "none",
+                color: "rgb(182, 182, 182)",
+                margin: "0 .5rem",
+              }}
+            >
+              <p>PUBLISH BOOK</p>
+            </NavLink>
+            <NavLink
+              to="/book/orders"
+              style={{
+                textDecoration: "none",
+                color: "rgb(182, 182, 182)",
+                margin: "0 .5rem",
+              }}
+            >
+              <p>MY ORDERS</p>
+            </NavLink>
+            {/* <NavLink
+              to="/profile"
+              style={{
+                textDecoration: "none",
+                color: "rgb(182, 182, 182)",
+                margin: "0 .5rem",
+              }}
+            >
+              <p>MY PROFILE</p>
+            </NavLink> */}
           </Nav>
         </Navbar.Collapse>
       </Container>
